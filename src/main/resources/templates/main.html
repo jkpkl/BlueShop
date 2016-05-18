@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"/></head>
+<body>
+  <h1>Product list</h1>
+
+  <table border="2">
+    <tr>
+      <th>NAME</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+    <tr th:each="prod : ${plist}">
+      <td th:text="${prod.pname}"></td>
+      <td th:text="${prod.pdetail}"></td>
+      <td th:text="${prod.price}"></td>
+      <td><a th:href="@{delete/{pid}(pid=${prod.pid})}">ลบ</a></td>
+    </tr>
+  </table>
+<br/>
+
+  <form action="/add" method="post">
+  	<input type="text" name="pname"/>
+  	<input type="text" name="pdetail" />
+  	<input type="text" name="price" />
+  	<input type="submit" value="add" /> 
+  </form>
+
+</body>
+</html>
